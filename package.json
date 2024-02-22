@@ -1,0 +1,9 @@
+{
+  "name": "rgbrei",
+  "version": "1.0.0",
+  "description": "aplicativo do icmc jr",
+  "main": "index.js",
+  "repository": "https://github.com/coqzieiro/rgbrei-app.git",
+  "author": "Felipe da Costa Coqueiro",
+  "license": "AGPL-3.0 license"
+}
