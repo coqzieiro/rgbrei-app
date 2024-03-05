@@ -6,7 +6,7 @@ const app = express();
 const port = 3001; 
 
 // Conectar ao banco de dados MongoDB
-mongoose.connect('mongodb://localhost:27017/auth_example', { useNewUrlParser: true, useUnifiedTopology: true }) // Alteração: use mongoose.connect() em vez de connect()
+mongoose.connect('mongodb+srv://felipecoqueiro:123lipe@cluster0.vixqlzc.mongodb.net/', { useNewUrlParser: true, useUnifiedTopology: true }) // Alteração: use mongoose.connect() em vez de connect()
   .then(() => {
     console.log('Conexão bem-sucedida ao banco de dados MongoDB.');
   })

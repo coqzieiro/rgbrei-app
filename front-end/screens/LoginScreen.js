@@ -7,13 +7,13 @@ const LoginScreen = () => {
 
   const handleLogin = async () => {
     try {
-      const response = await fetch('http://10.0.2.2:3000/login', {
+      const response = await fetch('http://localhost:3001/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({ email, password }),
-      });
+      });      
       if (response.ok) {
         Alert.alert('Sucesso', 'Login bem-sucedido.');
         // Redirecionar para a próxima tela ou executar outras ações após o login bem-sucedido
