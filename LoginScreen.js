@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import { View, TextInput, Button, StyleSheet, Alert, Image, TouchableOpacity, Text } from 'react-native';
+import { useNavigation } from '@react-navigation/native'; // Importando useNavigation
 
-const LoginScreen = ({ navigation }) => {
+const LoginScreen = () => {
+  const navigation = useNavigation(); // Obtendo o objeto de navegação
+  
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -31,8 +34,7 @@ const LoginScreen = ({ navigation }) => {
   };
 
   const handleForgotPassword = () => {
-    // Implemente sua lógica para lidar com a recuperação de senha aqui
-    Alert.alert('Esqueci a senha', 'Implemente sua lógica para recuperação de senha aqui.');
+    navigation.navigate('ForgotPassword'); // Redirecionando para ForgotPasswordScreen
   };
 
   return (

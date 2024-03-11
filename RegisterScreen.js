@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, TextInput, Button, StyleSheet, Alert } from 'react-native';
+import { View, TextInput, Button, StyleSheet, Alert, Text } from 'react-native';
 
 const RegisterScreen = ({ navigation }) => {
   const [name, setName] = useState('');
@@ -28,6 +28,7 @@ const RegisterScreen = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
+      <Text style={styles.title}>Digite as suas informações pessoais</Text>
       <TextInput
         style={styles.input}
         placeholder="Nome"
@@ -85,6 +86,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     paddingHorizontal: 20,
+  },
+  title: {
+    fontSize: 18,
+    marginBottom: 10,
   },
   input: {
     width: '100%',
