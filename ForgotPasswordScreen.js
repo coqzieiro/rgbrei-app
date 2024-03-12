@@ -10,9 +10,8 @@ const ForgotPasswordScreen = () => {
       return;
     }
 
-    await forgotPassword(email); // Chamando a função forgotPassword
+    await forgotPassword(email); 
 
-    // Não é mais necessário mostrar um alerta aqui, pois a função forgotPassword lida com isso
   };
 
   return (

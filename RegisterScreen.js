@@ -10,21 +10,39 @@ const RegisterScreen = ({ navigation }) => {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
 
-  const handleRegister = () => {
-    // Validar os campos antes de enviar
+  const handleRegister = async () => {
+    const API_URL = 'http://10.0.2.2:3001'; 
+  
     if (!name || !birthdate || !position || !phone || !email || !password || !confirmPassword) {
       Alert.alert('Erro', 'Por favor, preencha todos os campos.');
       return;
     }
-
+  
     if (password !== confirmPassword) {
       Alert.alert('Erro', 'As senhas não coincidem.');
       return;
     }
-
-    // Enviar os dados para o servidor ou fazer outras ações necessárias
-    console.log('Dados do formulário:', { name, birthdate, position, phone, email, password });
+  
+    try {
+      const response = await fetch(`${API_URL}/register`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ name, birthdate, position, phone, email, password }),
+      });
+  
+      if (response.ok) {
+        Alert.alert('Sucesso', 'Registro bem-sucedido.');
+      } else {
+        Alert.alert('Erro', 'Erro ao registrar usuário.');
+      }
+    } catch (error) {
+      console.error('Erro ao registrar usuário:', error);
+      Alert.alert('Erro', 'Erro ao registrar usuário. Por favor, tente novamente.');
+    }
   };
+  
 
   return (
     <View style={styles.container}>
