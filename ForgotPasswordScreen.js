@@ -10,8 +10,24 @@ const ForgotPasswordScreen = () => {
       return;
     }
 
-    await forgotPassword(email); 
+    try {
+      const response = await fetch('http://192.168.0.100:3001/forgot-password', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email }),
+      });
 
+      if (response.ok) {
+        Alert.alert('Sucesso', 'Um código de recuperação foi enviado para o seu e-mail.');
+      } else {
+        Alert.alert('Erro', 'Erro ao enviar o código de recuperação. Por favor, tente novamente.');
+      }
+    } catch (error) {
+      console.error('Erro ao enviar código de recuperação:', error);
+      Alert.alert('Erro', 'Erro ao enviar o código de recuperação. Por favor, tente novamente.');
+    }
   };
 
   return (

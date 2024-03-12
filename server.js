@@ -15,21 +15,26 @@ mongoose.connect('mongodb://localhost:27017/myapp')
   .then(() => console.log('Connected to MongoDB'))
   .catch(err => console.error('Erro ao conectar no mongoDB', err));
 
-app.post('/login', async (req, res) => {
-  try {
-    const { email, password } = req.body;
-    const user = await User.findOne({ email, password });
-    if (user) {
+  app.post('/login', async (req, res) => {
+    try {
+      const { email, password } = req.body;
+      const user = await User.findOne({ email });
+      if (!user) {
+        return res.status(401).json({ message: 'Credenciais inválidas' });
+      }
+  
+      // Verificar se o email fornecido corresponde ao email armazenado
+      if (email !== user.email || password !== user.password) {
+        return res.status(401).json({ message: 'Credenciais inválidas' });
+      }
+  
       res.status(200).json({ message: 'Login bem-sucedido' });
-    } else {
-      res.status(401).json({ message: 'Credenciais invalidas' });
+    } catch (error) {
+      console.error('Erro de login:', error);
+      res.status(500).json({ message: 'Erro interno do servidor' });
     }
-  } catch (error) {
-    console.error('Erro de login:', error);
-    res.status(500).json({ message: 'Erro interno do server' });
-  }
-});
-
+  });  
+  
 app.post('/register', async (req, res) => {
   try {
     const { name, birthdate, position, phone, email, password } = req.body;
