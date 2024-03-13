@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, TextInput, Button, StyleSheet, Alert, Text } from 'react-native';
+import { View, TextInput, TouchableOpacity, StyleSheet, Alert, Text } from 'react-native';
 
 const RegisterScreen = ({ navigation }) => {
   const [name, setName] = useState('');
@@ -92,7 +92,9 @@ const RegisterScreen = ({ navigation }) => {
         onChangeText={setConfirmPassword}
         secureTextEntry
       />
-      <Button title="Registrar" onPress={handleRegister} />
+      <TouchableOpacity style={styles.buttonContainer} onPress={handleRegister}>
+        <Text style={styles.buttonText}>Registrar</Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -116,6 +118,19 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     marginBottom: 10,
     paddingHorizontal: 10,
+    borderRadius: 20,
+  },
+  buttonContainer: {
+    width: '50%',
+    backgroundColor: 'green',
+    borderRadius: 20,
+    paddingVertical: 10,
+    alignItems: 'center',
+    marginTop: 10,
+  },
+  buttonText: {
+    color: 'white',
+    fontWeight: 'bold',
   },
 });
 

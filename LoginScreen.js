@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, TextInput, Button, StyleSheet, Alert, Image, TouchableOpacity, Text } from 'react-native';
+import { View, TextInput, TouchableOpacity, StyleSheet, Alert, Image, Text } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 const LoginScreen = () => {
@@ -53,7 +53,9 @@ const LoginScreen = () => {
         onChangeText={setPassword}
         secureTextEntry
       />
-      <Button title="LOGAR" onPress={handleLogin} />
+      <TouchableOpacity onPress={handleLogin} style={styles.button}>
+        <Text style={styles.buttonText}>LOGAR</Text>
+      </TouchableOpacity>
       <TouchableOpacity onPress={handleRegister} style={styles.registerButtonContainer}>
         <Text style={styles.registerButtonText}>REGISTRAR</Text>
       </TouchableOpacity>
@@ -72,6 +74,17 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingHorizontal: 20,
   },
+  button: {
+    backgroundColor: 'blue',
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 20, 
+    marginTop: 10,
+  },
+  buttonText: {
+    color: 'white',
+    fontWeight: 'bold',
+  },
   input: {
     width: '100%',
     height: 40,
@@ -79,6 +92,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     marginBottom: 10,
     paddingHorizontal: 10,
+    borderRadius: 20,
   },
   logo: {
     width: 300,
@@ -87,10 +101,11 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   registerButtonContainer: {
-    marginTop: 20,
     backgroundColor: 'green',
     paddingVertical: 10,
     paddingHorizontal: 20,
+    borderRadius: 20, 
+    marginTop: 10,
   },
   registerButtonText: {
     color: 'white',
